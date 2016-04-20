@@ -1,18 +1,21 @@
 {
-  "name": "timeStampAPI",
+  "name": "url_shortner_api",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is another FCC project that develops an API. I used [node v4.2.3](https://nodejs.org/en/), [Express 4](http://expressjs.com/) with a project I scaffold myself using [gulp.js](http://gulpjs.com/).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "ric mclaughlin",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "pg": "^4.5.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.21.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -22,5 +25,16 @@
     "should": "^8.3.0",
     "sinon": "^1.17.3",
     "supertest": "^1.2.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricmclaughlin/fcc_url_shortener.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ricmclaughlin/fcc_url_shortener/issues"
+  },
+  "homepage": "https://github.com/ricmclaughlin/fcc_url_shortener#readme"
 }

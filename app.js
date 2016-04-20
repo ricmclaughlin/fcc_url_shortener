@@ -8,13 +8,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-var timeStamp = {
-  "unixTime": null,
-  "naturalTime": null
+var url = {
+  'long_url': null,
+  'short_url': null,
+  'redirects': null
 };
-var timeStampRouter = require('./routes/timeStampRoute')(timeStamp);
+var urlShortenerRouter = require('./routes/urlShortenerRoute')(url);
 app.use(express.static(__dirname + '/public'));
-app.use('/', timeStampRouter);
+app.use('/', urlShortenerRouter);
 
 app.listen(PORT, function () {
   console.log('Running on PORT: ' + PORT);
