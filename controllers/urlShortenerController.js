@@ -1,26 +1,22 @@
+var redirect = require('../core');
+
 var urlShortenerController = function (timeStamp) {
   function get(req, res) {
-    if (req.params.url) {
-      res.status(201);
-      res.send(makeid(3));
+    if (req.originalUrl.length === 6) {
+      res.redirect(redirect.getRedirect(req.params.url));
     } else {
-      res.render('../index.html');
+      res.render('../views/index.html');
     }
   }
 
-  function makeid(lengthOfString) {
-    var text = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-    for (var i = 0; i < lengthOfString; i++) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-
-    return text;
+  function getNew(req, res) {
+    res.status(201);
+    //console.log(redirect.createRedirect(req.params.url.slice(1)));
+    res.send(req.params.url);
   }
-
   return {
-    get: get
+    get: get,
+    getNew: getNew
   };
 };
 
