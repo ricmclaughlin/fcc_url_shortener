@@ -1,5 +1,5 @@
 {
-  "name": "timestampapi",
+  "name": "urlshortenerapi",
   "version": "0.0.1",
   "ignore": [
     "**/.*",

@@ -19,10 +19,11 @@
       <ul>2. If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.</ul>
       <ul>3. When I visit that shortened URL, it will redirect me to my original link.</ul>
     </blockquote>
-    <h3>Example usage:</h3>
+    <h3>Example Create Shortened URL usage:</h3>
 
-    <code><a href="https://tranquil-harbor-71589.herokuapp.com/December%2015,%202015">https://tranquil-harbor-71589.herokuapp.com/December%2015,%202015</a></code> ->this will result in a new shortened URL to be returned
-    <br>
+    <code>https://tranquil-harbor-71589.herokuapp.com/http://freecodecamp.com/news</a></code> ->this will result in a new shortened URL to be returned like
+    <h4>Example Create Shortened URL Output:</h4> { "original_url": "http://freecodecamp.com/news", "short_url": "https://shurli.herokuapp.com/4" }
+    <h3>Example Use Shortened URL usage:</h3>
     <code><a href="https://tranquil-harbor-71589.herokuapp.com/1450137600">https://tranquil-harbor-71589.herokuapp.com/1450137600</a></code> ->this will result in a redirect
 
     <p id="footer">
