@@ -8,12 +8,11 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+
 var redir = new redirect.Redirect();
 
 var urlShortenerRouter = require('./routes/urlShortenerRoute')(redir);
+app.use(express.static(__dirname + '/public'));
 app.use('/', urlShortenerRouter);
 
 app.listen(PORT, function () {

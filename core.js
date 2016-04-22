@@ -75,12 +75,10 @@ var redirects = (function () {
   ///////////////////
 
   function createRedirect(longURL) {
-    if (confirmValidURL(longURL)) {
-      var newRedirect = new this.Redirect();
-      newRedirect.shortURL = this.makeid(5);
-      newRedirect.originalURL = longURL;
-      return newRedirect;
-    }
+    var newRedirect = new this.Redirect();
+    newRedirect.shortURL = this.makeid(5);
+    newRedirect.originalURL = longURL;
+    return newRedirect;
   }
 
   function getRedirect(shortenedURL) {
@@ -95,8 +93,7 @@ var redirects = (function () {
     Redirect: Redirect,
     createRedirect: createRedirect,
     getRedirect: getRedirect,
-    confirmUniqueness: confirmUniqueness,
-    makeid: makeid
+    confirmUniqueness: confirmUniqueness
   };
 
 })();

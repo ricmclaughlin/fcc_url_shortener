@@ -6,9 +6,6 @@ var routes = function (url) {
   urlShortenerRouter.route('/:url')
     .get(urlShortenerController.get);
 
-  urlShortenerRouter.route('/new/:url')
-    .get(urlShortenerController.getNew);
-
   return urlShortenerRouter;
 };
 
