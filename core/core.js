@@ -1,5 +1,6 @@
 var redirects = (function () {
   var redirects = [];
+
   activate();
 
   function activate() {
@@ -9,11 +10,6 @@ var redirects = (function () {
         shortURL: '12345'
       });
     }
-  }
-
-  function Redirect() {
-    this.originalURL = '';
-    this.shortURL = '';
   }
 
   function confirmUniqueness(candidate) {
@@ -76,9 +72,12 @@ var redirects = (function () {
 
   function createRedirect(longURL) {
     if (confirmValidURL(longURL)) {
-      var newRedirect = new this.Redirect();
-      newRedirect.shortURL = this.makeid(5);
-      newRedirect.originalURL = longURL;
+      var newRedirect = {
+        originalURL: longURL,
+        shortURL: makeid(5)
+      };
+      redirects.push(newRedirect);
+      console.log(redirects);
       return newRedirect;
     }
   }
@@ -86,17 +85,15 @@ var redirects = (function () {
   function getRedirect(shortenedURL) {
     // need to find the right redirect...
     var result2 = redirects.filter(function (el) {
-      return el.shortURL === shortenedURL;
+      console.log(shortenedURL + ' ' + el.shortURL);
+      return el.shortURL.toString() === shortenedURL.toString();
     })[0].originalURL;
     return result2;
   }
 
   return {
-    Redirect: Redirect,
     createRedirect: createRedirect,
-    getRedirect: getRedirect,
-    confirmUniqueness: confirmUniqueness,
-    makeid: makeid
+    getRedirect: getRedirect
   };
 
 })();

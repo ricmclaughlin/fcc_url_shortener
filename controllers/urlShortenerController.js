@@ -1,20 +1,24 @@
-var redirect = require('../core');
+var redirect = require('../core/core');
 
-var urlShortenerController = function (timeStamp) {
+var urlShortenerController = function (url) {
   function get(req, res) {
     if (!req.url) {
       res.render('index.html');
     } else if (req.originalUrl.length === 6) {
-      res.redirect(redirect.getRedirect(req.params.url));
-    } else {
-      res.status(201);
-      //console.log(redirect.createRedirect(req.params.url.slice(1)));
-      res.send(req.params.url);
+      res.redirect(redirect.getRedirect(req.originalUrl.slice(1)));
     }
   }
 
+  function post(req, res) {
+    res.status(201);
+    var newRedirect = JSON.parse(JSON.stringify(redirect.createRedirect(req.url.slice(5))));
+    newRedirect.shortURL = req.protocol + '://' + req.get('host') + '/' + newRedirect.shortURL;
+    res.send(newRedirect);
+  }
+
   return {
-    get: get
+    get: get,
+    post: post
   };
 };
 
