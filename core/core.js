@@ -68,7 +68,6 @@ var redirects = (function () {
 
     return text;
   }
-  ///////////////////
 
   function createRedirect(longURL) {
     if (confirmValidURL(longURL)) {
@@ -77,18 +76,18 @@ var redirects = (function () {
         shortURL: makeid(5)
       };
       redirects.push(newRedirect);
-      console.log(redirects);
       return newRedirect;
+    } else {
+      return false;
     }
   }
 
   function getRedirect(shortenedURL) {
     // need to find the right redirect...
     var result2 = redirects.filter(function (el) {
-      console.log(shortenedURL + ' ' + el.shortURL);
       return el.shortURL.toString() === shortenedURL.toString();
-    })[0].originalURL;
-    return result2;
+    });
+    return result2.length !== 0 ? result2[0].originalURL : false;
   }
 
   return {

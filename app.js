@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var redirect = require('./core');
+var redirect = require('./core/core');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -10,9 +10,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-var redir = new redirect.Redirect();
-
-var urlShortenerRouter = require('./routes/urlShortenerRoute')(redir);
+var urlShortenerRouter = require('./routes/urlShortenerRoute')();
 app.use(express.static(__dirname + '/public'));
 app.use('/', urlShortenerRouter);
 
